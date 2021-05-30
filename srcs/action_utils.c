@@ -1,22 +1,45 @@
 #include "push_swap.h"
 
-void	push(t_node **from_head, t_node **to_head, t_node **to_tail)
+void	push(char *line, t_stack *stack)
 {
 	t_node *tmp;
 
-	if (*from_head == NULL)
-		return ;
-	tmp = *from_head;
-	*from_head = (*from_head)->next;
-	if (*from_head)
-		(*from_head)->prev = NULL;
-	if (*to_head)
-		(*to_head)->prev = tmp;
-	else
-		*to_tail = tmp;
-	tmp->next = *to_head;
-	*to_head = tmp;
-	(*to_head)->prev = NULL;
+	if (*(line + 1) == 'a')
+	{
+		if (stack->b_head == NULL)
+			return ;
+		tmp = stack->b_head;
+		stack->b_head = stack->b_head->next;
+		if (stack->b_head)
+			(stack->b_head)->prev = NULL;
+		if (stack->a_head)
+			(stack->a_head)->prev = tmp;
+		else
+			stack->a_tail = tmp;
+		tmp->next = stack->a_head;
+		stack->a_head = tmp;
+		stack->a_head->prev = NULL;
+		write(1, "pa\n", 3);
+		stack->count += 1;
+	}
+	if (*(line + 1) == 'b')
+	{
+		if (stack->a_head == NULL)
+			return ;
+		tmp = stack->a_head;
+		stack->a_head = stack->a_head->next;
+		if (stack->a_head)
+			(stack->a_head)->prev = NULL;
+		if (stack->b_head)
+			(stack->b_head)->prev = tmp;
+		else
+			stack->b_tail = tmp;
+		tmp->next = stack->b_head;
+		stack->b_head = tmp;
+		stack->b_head->prev = NULL;
+		write(1, "pb\n", 3);
+		stack->count += 1;
+	}
 }
 
 void	swap(t_node **head)

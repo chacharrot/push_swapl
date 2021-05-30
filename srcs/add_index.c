@@ -1,14 +1,11 @@
 #include "push_swap.h"
 
-void    add_index(t_stack *stack, int ac)
+void    add_index(t_stack *stack, int max)
 {
     t_node  *node;
     t_node  *diff;
-    int     pivot;
 
     node = stack->a_head;
-    pivot = (ac - 1) / 2;
-
     while (node != NULL)
     {
         diff = stack->a_head;
@@ -18,8 +15,8 @@ void    add_index(t_stack *stack, int ac)
                 node->index++;
             diff = diff->next;
         }
-        if (node->index == pivot)
-            stack->pivot = node->nbr;
+        if (node->index == (max - (max / 2)))
+            stack->pivot = node;
         node = node->next;
     }
 }

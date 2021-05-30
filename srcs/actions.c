@@ -1,49 +1,67 @@
 #include "push_swap.h"
 
-void	swapper(char *line, t_stack *a, t_stack *b)
+void	swapper(char *line, t_stack *stack)
 {
 	if (!ft_strcmp(line, "sa"))
 	{
-		swap(&a->head);
+		swap(&stack->a_head);
+		write(1, "sa\n", 3);
+		stack->count += 1;
 		return ;
 	}
 	if (!ft_strcmp(line, "sb"))
 	{
-		swap(&b->head);
+		swap(&stack->b_head);
+		write(1, "sb\n", 3);
+		stack->count += 1;
 		return ;
 	}
-	swap(&a->head);
-	swap(&b->head);
+	swap(&stack->a_head);
+	swap(&stack->b_head);
+	write(1, "ss\n", 3);
+	stack->count += 1;
 }
 
-void	rotater(char *line, t_stack *a, t_stack *b)
+void	rotater(char *line, t_stack *stack)
 {
 	if (!ft_strcmp(line, "ra"))
 	{
-		rotate(&a->head, &a->end);
+		rotate(&stack->a_head, &stack->a_tail);
+		write(1, "ra\n", 3);
+		stack->count += 1;
 		return ;
 	}
 	if (!ft_strcmp(line, "rb"))
 	{
-		rotate(&b->head, &b->end);
+		rotate(&stack->b_head, &stack->b_tail);
+		write(1, "rb\n", 3);
+		stack->count += 1;
 		return ;
 	}
-	rotate(&a->head, &a->end);
-	rotate(&b->head, &b->end);
+	rotate(&stack->a_head, &stack->a_tail);
+	rotate(&stack->b_head, &stack->b_tail);
+	write(1, "rr\n", 3);
+	stack->count += 1;
 }
 
-void	rev_rotater(char *line, t_stack *a, t_stack *b)
+void	rev_rotater(char *line, t_stack *stack)
 {
 	if (!ft_strcmp(line, "rra"))
 	{
-		rev_rotate(&a->head, &a->end);
+		rev_rotate(&stack->a_head, &stack->a_tail);
+		write(1, "rra\n", 4);
+		stack->count += 1;
 		return ;
 	}
 	if (!ft_strcmp(line, "rrb"))
 	{
-		rev_rotate(&b->head, &b->end);
+		rev_rotate(&stack->b_head, &stack->b_tail);
+		write(1, "rrb\n", 4);
+		stack->count += 1;
 		return ;
 	}
-	rev_rotate(&a->head, &a->end);
-	rev_rotate(&b->head, &b->end);
+	rev_rotate(&stack->a_head, &stack->a_tail);
+	rev_rotate(&stack->b_head, &stack->b_tail);
+	write(1, "rrr\n", 4);
+	stack->count += 1;
 }

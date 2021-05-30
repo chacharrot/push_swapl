@@ -1,25 +1,5 @@
 #include "push_swap.h"
 
-static void	free_node(t_node *stack)
-{
-	t_node	*tmp;
-	t_node	*next;
-	
-	if (stack != NULL)
-	{
-		tmp = stack;
-		while (tmp->next != NULL)
-		{
-			next = tmp->next;
-			free(tmp);
-			tmp = next;
-		}
-		free(tmp);
-	}
-	write(2, "Error\n", 6);
-	exit(1);
-}
-
 static int	check_arg(char *av)
 {
 	int	i;
@@ -72,9 +52,9 @@ int			check_double(t_node *node, int ac)
 {
 	t_node	*diff;
 
-	diff = node->next;
 	while (node != NULL)
 	{
+		diff = node->next;
 		while (diff != NULL)
 		{
 			if (node->nbr == diff->nbr)
@@ -94,13 +74,16 @@ t_stack		*create_stack(int ac, char **av)
 
 	if(!(stack = malloc(sizeof(t_stack))))
 		return (0);
-
 	i = 1;
 	now_node = NULL;
 	while(i < ac)
 	{
 		if (!(now_node = create_node(av[i], now_node)))
+		{
 			free_node(stack->a_head);
+			write(2, "Error\n", 6);
+			exit(1);
+		}
 		if (i == 1)
 			stack->a_head = now_node;
 		i++;
@@ -108,10 +91,14 @@ t_stack		*create_stack(int ac, char **av)
 			stack->a_tail = now_node;
 	}
 	if (!(check_double(stack->a_head, ac)))
+	{
 		free_node(stack->a_head);
-
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 	stack->b_head = NULL;
 	stack->b_tail = NULL;
 	stack->pivot = 0;
+	stack->count = 0;
 	return (stack);
 }
