@@ -7,25 +7,29 @@ static void     small_sort(t_stack *stack, int max)
 
 static void     big_sort(t_stack *stack, int cnt)
 {
-    int     swap_cnt;
+    big_sort_split(stack, 0, stack->pivot1->index);
+    big_sort_split(stack, stack->pivot1->index, stack->pivot2->index);
+    big_sort_split(stack, stack->pivot2->index, stack->pivot3->index);
+    big_sort_split(stack, stack->pivot3->index, stack->pivot4->index);
+    big_sort_split(stack, stack->pivot4->index, stack->pivot5->index);
+    // big_sort_split(stack, stack->pivot5->index, stack->pivot6->index);
+    // big_sort_split(stack, stack->pivot6->index, stack->pivot7->index);
+    // big_sort_split(stack, stack->pivot7->index, stack->pivot8->index);
+    // big_sort_split(stack, stack->pivot8->index, stack->pivot9->index);
+    // big_sort_split(stack, stack->pivot9->index, stack->pivot10->index);
+    big_sort_split(stack, stack->pivot5->index, cnt);
 
-    swap_cnt = 0;
-    while (stack->a_head && swap_cnt < stack->pivot->index)
-    {
-        if (stack->a_head->index < stack->pivot->index)
-        {
-            push("pb", stack);
-            swap_cnt += 1;
-        }
-        else
-            rotater("ra", stack);
-    }
-    big_sort_swap(stack, 0, stack->pivot->index - 1);
-
-    swap_cnt = cnt;
-    while (stack->a_head->index >= stack->pivot->index)
-        push("pb", stack);
-    big_sort_swap(stack, stack->pivot->index, cnt);
+    big_sort_swap_first(stack, stack->pivot5->index, cnt);
+    // big_sort_swap_end(stack, stack->pivot9->index, stack->pivot10->index);
+    // big_sort_swap_end(stack, stack->pivot8->index, stack->pivot9->index);
+    // big_sort_swap_end(stack, stack->pivot7->index, stack->pivot8->index);
+    // big_sort_swap_end(stack, stack->pivot6->index, stack->pivot7->index);
+    // big_sort_swap_end(stack, stack->pivot5->index, stack->pivot6->index);
+    big_sort_swap_end(stack, stack->pivot4->index, stack->pivot5->index);
+    big_sort_swap_end(stack, stack->pivot3->index, stack->pivot4->index);
+    big_sort_swap_end(stack, stack->pivot2->index, stack->pivot3->index);
+    big_sort_swap_end(stack, stack->pivot1->index, stack->pivot2->index);
+    big_sort_swap_end(stack, 0, stack->pivot1->index);
 }
 
 void            solve(t_stack *stack, int max)

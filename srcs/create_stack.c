@@ -98,7 +98,6 @@ t_stack		*create_stack(int ac, char **av)
 	}
 	stack->b_head = NULL;
 	stack->b_tail = NULL;
-	stack->pivot = 0;
 	stack->count = 0;
 	return (stack);
 }

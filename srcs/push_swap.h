@@ -19,13 +19,26 @@ typedef struct		s_stack
 	t_node		*a_tail;
 	t_node		*b_head;
 	t_node		*b_tail;
-	t_node		*pivot;
+	t_node		*pivot1;
+	t_node		*pivot2;
+	t_node		*pivot3;
+	t_node		*pivot4;
+	t_node		*pivot5;
+	t_node		*pivot6;
+	t_node		*pivot7;
+	t_node		*pivot8;
+	t_node		*pivot9;
+	t_node		*pivot10;
 	int			count;
 }				t_stack;
 
 t_stack		*create_stack(int ac, char **av);
 void    	add_index(t_stack *stack, int ac);
 void    	solve(t_stack *stack, int ac);
+void        big_sort_split(t_stack *stack, int min, int max);
+void        big_sort_swap_first(t_stack *stack, int min, int max);
+void        big_sort_swap_end(t_stack *stack, int min, int max);
+
 void     	big_sort_swap(t_stack *stack, int min, int max);
 
 void		push(char *line, t_stack *stack);
