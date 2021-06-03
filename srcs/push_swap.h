@@ -25,7 +25,7 @@ typedef struct		s_stack
 t_stack				*create_stack(int ac, char **av);
 int					check_arg(char *av);
 int					check_int_range(long long n);
-int					check_double(t_node *node, int ac);
+int					check_double(t_node *node);
 
 void				add_index(t_stack *stack, int ac);
 

@@ -24,7 +24,7 @@ int		check_int_range(long long n)
     return (0);
 }
 
-int		check_double(t_node *node, int ac)
+int		check_double(t_node *node)
 {
     t_node *diff;
 

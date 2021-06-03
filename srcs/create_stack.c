@@ -51,7 +51,7 @@ t_stack			*create_stack(int ac, char **av)
 		if (i == ac)
 			stack->a_tail = now_node;
 	}
-	if (!(check_double(stack->a_head, ac)))
+	if (!(check_double(stack->a_head)))
 		print_error(stack);
 	stack->b_head = 0;
 	stack->b_tail = 0;
