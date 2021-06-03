@@ -44,7 +44,7 @@ void					free_node(t_node *stack)
 {
 	t_node				*tmp;
 	t_node				*next;
-	
+
 	if (stack != NULL)
 	{
 		tmp = stack;

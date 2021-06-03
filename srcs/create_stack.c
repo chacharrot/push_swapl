@@ -35,7 +35,7 @@ t_stack			*create_stack(int ac, char **av)
 {
 	t_stack		*stack;
 	t_node		*now_node;
-	int i;
+	int			i;
 
 	if (!(stack = malloc(sizeof(t_stack))))
 		return (0);

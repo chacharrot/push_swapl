@@ -5,7 +5,7 @@ void		swap(t_node **head)
 	t_node	*tmp;
 
 	if (*head == NULL || (*head)->next == NULL)
-		return;
+		return ;
 	tmp = *head;
 	*head = (*head)->next;
 	tmp->next = (*head)->next;
@@ -17,7 +17,7 @@ void		swap(t_node **head)
 void		rotate(t_node **head, t_node **tail)
 {
 	if (*head == NULL || *tail == NULL || (*head)->next == NULL)
-		return;
+		return ;
 	(*tail)->next = *head;
 	(*head)->prev = *tail;
 	*head = (*head)->next;
@@ -29,7 +29,7 @@ void		rotate(t_node **head, t_node **tail)
 void		rev_rotate(t_node **head, t_node **tail)
 {
 	if (*head == NULL || *tail == NULL || (*tail)->prev == NULL)
-		return;
+		return ;
 	(*head)->prev = *tail;
 	(*tail)->next = *head;
 	*head = *tail;
