@@ -1,11 +1,11 @@
 #include "push_swap.h"
 
-static int		is_sort(t_node *stack)
+static int	is_sort(t_node *stack)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	while(stack)
+	while (stack)
 	{
 		if (i != stack->index)
 			return (0);
