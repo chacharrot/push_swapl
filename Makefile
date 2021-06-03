@@ -1,30 +1,36 @@
 NAME		= push_swap
 
-HEADER		= push_swap.h
+HEADER		= ./srcs/push_swap.h
 
-SRCS_PATH	= ./srcs
-SRCS_NAME	= push_swap.c
-SRCS		= $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
+SRCS_DIR	= ./srcs
+SRCS_NAME	= push_swap.c			\
+			  push_swap_utils.c		\
+			  action_utils.c		\
+			  action_utils_push.c	\
+			  actions.c				\
+			  add_index.c			\
+			  create_stack.c		\
+			  create_stack_check.c	\
+			  solve.c				\
+			  solve_utils_1.c		\
+			  solve_utils_2.c
+SRCS		= $(addprefix $(SRCS_DIR)/, $(SRCS_NAME))
+OBJS		= $(SRCS:.c=.o)
 
-OBJS_PATH	= ./objs
-OBJS_NAME	= $(SRCS_NAME:.c=.o)
-OBJS		= $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
-
-CC		= gcc
-CFLAGS		= -Wall -Wextra - Werror -g
-RM		= rm -rf
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror -g
+RM			= rm -rf
 
 all :		$(NAME)
 
 $(NAME) :	$(OBJS)
-		$(CC) -c $(CFLAGS) $(SRCS)
-		ar rc $(NAME) $(OBJS) $(HEADER)
+			$(CC) $(CFLAGS) $^ -o $@
 
 clean :
-		$(RM) $(OBJS_PATH)
+			$(RM) $(OBJS)
 
 fclean :	clean
-		$(RM) $(NAME)
+			$(RM) $(NAME) $(OBJS)
 
 re :		fclean all
 
