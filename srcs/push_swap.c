@@ -1,5 +1,20 @@
 #include "push_swap.h"
 
+static int		is_sort(t_node *stack)
+{
+	int	i;
+
+	i = 0;
+	while(stack)
+	{
+		if (i != stack->index)
+			return (0);
+		stack = stack->next;
+		i++;
+	}
+	return (1);
+}
+
 int			main(int ac, char **av)
 {
 	t_stack	*stack;
@@ -9,6 +24,11 @@ int			main(int ac, char **av)
 	if (!(stack = create_stack(ac, av)))
 		return (0);
 	add_index(stack, ac - 1);
+	if (is_sort(stack->a_head))
+	{
+		free_node(stack->a_head);
+		return (0);
+	}
 	solve(stack, ac - 1);
 	free_node(stack->a_head);
 	free(stack);
