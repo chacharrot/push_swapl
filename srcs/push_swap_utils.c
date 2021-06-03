@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 16:32:43 by scha              #+#    #+#             */
+/*   Updated: 2021/06/03 16:33:25 by scha             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long long				ft_atol(const char *nptr)
@@ -22,7 +34,7 @@ long long				ft_atol(const char *nptr)
 		num *= 10;
 		num = num + nptr[i] - '0';
 		if (i >= 18)
-			return(num);
+			return (num);
 		i++;
 	}
 	return (num * sign);
