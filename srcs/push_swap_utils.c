@@ -21,6 +21,8 @@ long long				ft_atol(const char *nptr)
 	{
 		num *= 10;
 		num = num + nptr[i] - '0';
+		if (i >= 18)
+			return(num);
 		i++;
 	}
 	return (num * sign);
