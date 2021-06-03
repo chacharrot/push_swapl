@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_stack	*stack;
-	int	i;
-	t_node	*node;
+	t_stack *stack;
+	int i;
+	t_node *node;
 
 	if (ac < 2 || av[1] == 0)
 		return (0);
@@ -14,8 +14,9 @@ int	main(int ac, char **av)
 	add_index(stack, ac - 1);
 	solve(stack, ac - 1);
 
-	// test code
-	i = 0;
+	/*
+	test code
+		i = 0;
 	node = stack->a_head;
 	while (node)
 	{
@@ -32,6 +33,7 @@ int	main(int ac, char **av)
 		i++;
 	}
 	printf("count : %d\n", stack->count);
+	*/
 
 	free_node(stack->a_head);
 	free(stack);
