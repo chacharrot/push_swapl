@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void big_sort_swap_end_check1_max(t_stack *stack, int *max)
+static void	big_sort_swap_end_check1_max(t_stack *stack, int *max)
 {
     if (stack->a_head->index == (*max) - 1)
     {
@@ -15,7 +15,7 @@ static void big_sort_swap_end_check1_max(t_stack *stack, int *max)
     }
 }
 
-static int big_sort_swap_end_check1(t_stack *stack, int *min, int *max, int *min_check)
+static int	big_sort_swap_end_check1(t_stack *stack, int *min, int *max, int *min_check)
 {
     if (stack->b_head->index == *min)
     {
@@ -40,7 +40,7 @@ static int big_sort_swap_end_check1(t_stack *stack, int *min, int *max, int *min
     return (1);
 }
 
-static int big_sort_swap_end_check2(t_stack *stack, int *min, int *max, int *min_check)
+static int	big_sort_swap_end_check2(t_stack *stack, int *min, int *max, int *min_check)
 {
     if (stack->b_head->index == (*min) + 1)
     {
@@ -53,11 +53,11 @@ static int big_sort_swap_end_check2(t_stack *stack, int *min, int *max, int *min
     return (1);
 }
 
-static void big_sort_swap_end_all_check(t_stack *stack, int min, int max, int *min_check)
+static void	big_sort_swap_end_all_check(t_stack *stack, int min, int max, int *min_check)
 {
-    int cnt;
-    int while_end;
-    int i;
+    int		cnt;
+    int		while_end;
+    int		i;
 
     i = 0;
     cnt = 0;
@@ -81,9 +81,9 @@ static void big_sort_swap_end_all_check(t_stack *stack, int min, int max, int *m
     }
 }
 
-void big_sort_swap_end(t_stack *stack, int min, int max)
+void		big_sort_swap_end(t_stack *stack, int min, int max)
 {
-    int min_check;
+    int		min_check;
 
     min_check = 0;
     big_sort_swap_end_all_check(stack, min, max, &min_check);

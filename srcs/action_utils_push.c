@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-static void push_a(t_stack *stack)
+static void	push_a(t_stack *stack)
 {
-    t_node *tmp;
+    t_node	*tmp;
 
     if (stack->b_head == NULL)
         return;
@@ -18,12 +18,11 @@ static void push_a(t_stack *stack)
     stack->a_head = tmp;
     stack->a_head->prev = NULL;
     write(1, "pa\n", 3);
-    stack->count += 1;
 }
 
-static void push_b(t_stack *stack)
+static void	push_b(t_stack *stack)
 {
-    t_node *tmp;
+    t_node	*tmp;
 
     if (stack->a_head == NULL)
         return;
@@ -39,10 +38,9 @@ static void push_b(t_stack *stack)
     stack->b_head = tmp;
     stack->b_head->prev = NULL;
     write(1, "pb\n", 3);
-    stack->count += 1;
 }
 
-void push(char *line, t_stack *stack)
+void 		push(char *line, t_stack *stack)
 {
     if (*(line + 1) == 'a')
         push_a(stack);

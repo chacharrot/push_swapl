@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void small_sort_3(t_stack *stack, int min, int max)
+static void	small_sort_3(t_stack *stack, int min, int max)
 {
     if (stack->a_head->index == max - 1)
         rotater("ra", stack);
@@ -23,9 +23,9 @@ static void small_sort_3(t_stack *stack, int min, int max)
     }
 }
 
-static void small_sort_5(t_stack *stack, int max)
+static void	small_sort_5(t_stack *stack, int max)
 {
-    int min;
+    int		min;
 
     min = 0;
     while (min < max / 2)
@@ -45,11 +45,9 @@ static void small_sort_5(t_stack *stack, int max)
     push("pa", stack);
 }
 
-static void big_sort(t_stack *stack, int cnt)
+static void	big_sort(t_stack *stack, int cnt)
 {
-    t_node *now_pivot;
-    int i;
-    t_node *node;
+    t_node	*now_pivot;
 
     now_pivot = stack->pivot;
     big_sort_split(stack, 0, now_pivot->index);
@@ -59,7 +57,6 @@ static void big_sort(t_stack *stack, int cnt)
         now_pivot = now_pivot->next;
     }
     big_sort_split(stack, now_pivot->index, cnt);
-
     big_sort_swap_first(stack, now_pivot->index, cnt);
     while (now_pivot->prev)
     {
@@ -69,7 +66,7 @@ static void big_sort(t_stack *stack, int cnt)
     big_sort_swap_end(stack, 0, now_pivot->index);
 }
 
-void solve(t_stack *stack, int max)
+void		solve(t_stack *stack, int max)
 {
     if (max > 5)
         big_sort(stack, max);
