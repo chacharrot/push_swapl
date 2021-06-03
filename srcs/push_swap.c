@@ -31,6 +31,7 @@ int			main(int ac, char **av)
 	}
 	solve(stack, ac - 1);
 	free_node(stack->a_head);
+	free_node(stack->pivot);
 	free(stack);
 	return (0);
 }
